@@ -3,7 +3,7 @@
 
 #include <memory>
 
-#include "particle.h"
+#include "rigid_body.h"
 #include "mesh.h"
 #include "simobject.h"
 
@@ -13,13 +13,13 @@ namespace simphys {
 
   // forward declarations
   class Mesh;
-  class Particle;
+  class RigidBody;
   class Quaternion;
 
   class SimObject3D : public SimObject {
   private:
     // coordinates of centroid.
-    shared_ptr<Particle> state;
+    shared_ptr<RigidBody> state;
     
     // quaternion representation of orientation
     shared_ptr<Quaternion> orientation;
@@ -29,12 +29,12 @@ namespace simphys {
 
   public:
 
-    SimObject3D(Particle p, Mesh s);
+    SimObject3D(RigidBody p, Mesh s);
 
     /*
       Return a shared pointer to the physics state of this object.
     */
-    shared_ptr<Particle> getState() const;
+    shared_ptr<RigidBody> getState() const;
     
     /*
       Set the sprite for this object.

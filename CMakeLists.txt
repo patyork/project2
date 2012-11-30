@@ -22,7 +22,7 @@ target_link_libraries(project2 spengine)
 # build spengine library
 add_library(spengine SHARED
   src/main/vec3.cpp
-  src/main/particle.cpp
+  src/main/mat33.cpp
   src/main/render_engine.cpp
   src/main/input_manager.cpp
   src/main/quaternion.cpp

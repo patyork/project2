@@ -2,7 +2,7 @@
 #include <memory>
 #include <string>
 
-#include "simphys/particle.h"
+#include "simphys/rigid_body.h"
 #include "simphys/simobject3D.h"
 #include "simphys/mesh.h"
 #include "simphys/quaternion.h"
@@ -11,9 +11,9 @@ namespace simphys {
 
   using std::shared_ptr;
   
-  SimObject3D::SimObject3D(Particle p, Mesh s)
+  SimObject3D::SimObject3D(RigidBody p, Mesh s)
     : SimObject{std::to_string((std::chrono::high_resolution_clock::now()).time_since_epoch().count())}
-    , state{std::make_shared<Particle>(p)} 
+    , state{std::make_shared<RigidBody>(p)} 
     , orientation{std::make_shared<Quaternion>()}
     , mesh{std::make_shared<Mesh>(s)} {
       
@@ -21,7 +21,7 @@ namespace simphys {
 
     }
 
-  shared_ptr<Particle> SimObject3D::getState() const {
+  shared_ptr<RigidBody> SimObject3D::getState() const {
     return state;
   }
 

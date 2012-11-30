@@ -1,6 +1,6 @@
 #include "simphys/simobject3D.h"
 #include "simphys/mesh.h"
-#include "simphys/particle.h"
+#include "simphys/rigid_body.h"
 
 #include <iostream>
 #include <string>
@@ -16,7 +16,7 @@ namespace simphys {
   void Mesh::draw() const {
     
     // TODO change the pointer to point to a rigid body.
-    shared_ptr<Particle> p = owner->getState();
+    shared_ptr<RigidBody> p = owner->getState();
     auto pos = p->getPosition();
     float x = pos.getX();
     float y = pos.getY();
@@ -32,12 +32,12 @@ namespace simphys {
       you'll need to convert from a quaternion representation to an
       axis-angle representation. This is in the slides and was a
       question on exam 2.
-    */
+
     float angle = 0.0f;
     float x_axis = 0.0f;
     float y_axis = 0.0f;
     float z_axis = 0.0f;
-
+    */
     // You can ignore these lines - they set up drawing a sphere.
     GLUquadricObj *obj = gluNewQuadric();
     gluQuadricNormals(obj, GLU_SMOOTH);

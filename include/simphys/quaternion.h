@@ -1,34 +1,52 @@
+// Implementation of the Quaternion class
+
+#include <cmath>
+#include "simphys/vec3.h"
+#include "simphys/mat33.h"
+
 #ifndef QUATERNION_H
 #define QUATERNION_H
 
-namespace simphys {
-  
-  class Quaternion {
-  private:
-    float w;
-    float x;
-    float y;
-    float z;
+namespace simphys
+{
+	class Quaternion{
+	private:
+		float w,x,y,z;
+	
+	public:
+	     Quaternion();
+  		Quaternion(const vec3 v);
 
-  public:
-    Quaternion() 
-      : w{0.0f}
-    , x{0.0f}
-    , y{0.0f}
-    , z{0.0f} { }
+  		Quaternion(const float a, const float b, const float c, const float d);
 
-    Quaternion(float w_, float x_, float y_, float z_)
-      : w{w_}
-    , x{x_}
-    , y{y_}
-    , z{z_} { }
+  		float getW() const;
 
-    // TODO - OTHER MEMBER FUNCTIONS AS APPROPRIATE
-  };
+  		float getX() const;
 
-  // TODO - OTHER FUNCTIONS AS APPROPRIATE
+  		float getY() const;
 
-} // namespace simphys
+  		float getZ() const;
 
+  		void setW(float newW);
 
-#endif // QUATERNION_H
+  		void setX(float newX);
+
+  		void setY(float newY);
+
+  		void setZ(float newZ);
+
+  		float norm() const;
+
+  		void normalize();
+
+  		mat33 getMatrix() const;
+
+  		Quaternion operator+(const Quaternion& other);
+
+  		Quaternion operator*(const Quaternion& other);
+  	};
+
+  Quaternion operator*(const float f, const Quaternion& q);
+}
+
+#endif
